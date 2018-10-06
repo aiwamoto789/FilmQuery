@@ -8,7 +8,7 @@ public class Film {
 	private int id, release_year, language_id, rental_duration, length;
 	private double rental_rate, replacement_cost;
 	private List<Actor> actorsInFilm;
-	private Set<String> special_features;
+	private String special_features;
 	
 	public Film() {
 		
@@ -17,7 +17,7 @@ public class Film {
 	
 	public Film(String title, String description, String rating, int id, int release_year, int language_id,
 			int rental_duration, int length, double rental_rate, double replacement_cost, List<Actor> actorsInFilm,
-			Set<String> special_features) {
+			String special_features) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -185,10 +185,10 @@ public class Film {
 	public void setActorsInFilm(List<Actor> actorsInFilm) {
 		this.actorsInFilm = actorsInFilm;
 	}
-	public Set<String> getSpecial_features() {
+	public String getSpecial_features() {
 		return special_features;
 	}
-	public void setSpecial_features(Set<String> special_features) {
+	public void setSpecial_features(String special_features) {
 		this.special_features = special_features;
 	}
 	

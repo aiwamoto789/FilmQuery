@@ -1,6 +1,7 @@
 package com.skilldistillery.filmquery.app;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,20 +27,55 @@ public class FilmQueryApp {
     
     input.close();
   }
-  private void test() throws SQLException {
-	  Film film = db.getFilmById(1);
-	  System.out.println(film);
-	  Actor actor = db.getActorById(2);
-	  System.out.println(actor);
-	  List<Actor> actors = db.getActorsByFilmId(3);
-	  System.out.println(actors);
-  }
+//  private void test() throws SQLException {
+//	  Film film = db.getFilmById(1);
+//	  System.out.println(film);
+//	  Actor actor = db.getActorById(2);
+//	  System.out.println(actor);
+//	  List<Actor> actors = db.getActorsByFilmId(3);
+//	  System.out.println(actors);
+//  }
 
   private void startUserInterface(Scanner input) {
-	System.out.println("Enter the id of the movie you would like to see: ");
-    int id = input.nextInt();
-    Film film = db.getFilmById(id);
-    System.out.println(film);
+	System.out.println("Search for a movie by (1)id or (2) keyword or press (0) to exit");
+	int id = input.nextInt();
+	switch(id) {
+	case 0:{
+    	System.exit(0);
+    	break;
+	}
+	case 1:{
+		System.out.println("Enter the id of the movie you would like to see: ");
+		int id2 = input.nextInt();
+		Film film = db.getFilmById(id2);
+		if(film == null) {
+			System.out.println("Movie not found.  Invalid film id.");
+		}
+		else{
+			System.out.println(film);
+		}
+		break;
+	}
+	case 2:{
+		System.out.println("Search for a movie by key-word: ");
+		String keyword = input.next();
+		Film film = null;
+		ArrayList<Film> films = null;
+		try {
+			films = db.getFilmsByKeyWord(keyword);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(films.size() > 0 ) {
+			System.out.println(films);
+		}
+		else {
+		System.out.println("unable to find movie that matches key-word");
+		}
+		break;
+	}
+    
   }
-
+  }
 }
+
