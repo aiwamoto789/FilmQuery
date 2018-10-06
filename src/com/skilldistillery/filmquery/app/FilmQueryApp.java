@@ -1,9 +1,12 @@
 package com.skilldistillery.filmquery.app;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.skilldistillery.filmquery.database.DatabaseAccessor;
 import com.skilldistillery.filmquery.database.DatabaseAccessorObject;
+import com.skilldistillery.filmquery.entities.Actor;
 import com.skilldistillery.filmquery.entities.Film;
 
 public class FilmQueryApp {
@@ -12,13 +15,8 @@ public class FilmQueryApp {
 
   public static void main(String[] args) {
     FilmQueryApp app = new FilmQueryApp();
-    app.test();
-//    app.launch();
-  }
-
-  private void test() {
-    Film film = db.getFilmById(1);
-    System.out.println(film);
+    app.launch();
+    //app.test();
   }
 
   private void launch() {
@@ -28,9 +26,20 @@ public class FilmQueryApp {
     
     input.close();
   }
+  private void test() throws SQLException {
+	  Film film = db.getFilmById(1);
+	  System.out.println(film);
+	  Actor actor = db.getActorById(2);
+	  System.out.println(actor);
+	  List<Actor> actors = db.getActorsByFilmId(3);
+	  System.out.println(actors);
+  }
 
   private void startUserInterface(Scanner input) {
-    
+	System.out.println("Enter the id of the movie you would like to see: ");
+    int id = input.nextInt();
+    Film film = db.getFilmById(id);
+    System.out.println(film);
   }
 
 }
