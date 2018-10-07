@@ -9,7 +9,18 @@ public class Film {
 	private double rental_rate, replacement_cost;
 	private List<Actor> actorsInFilm;
 	private String special_features;
+	private String language;
 	
+	public String getLanguage() {
+		return language;
+	}
+
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+
 	public Film() {
 		
 	}
