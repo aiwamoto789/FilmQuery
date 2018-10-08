@@ -60,6 +60,7 @@ public class FilmQueryApp {
 					System.out.println("rating: " + film.getRating());
 					System.out.println("description: " + film.getDescription());
 					System.out.println("language: " + film.getLanguage());
+					System.out.println("cast: " + film.getActorsInFilm());
 				}
 				break;
 			}
@@ -81,6 +82,7 @@ public class FilmQueryApp {
 						System.out.println("rating: " + film.getRating());
 						System.out.println("description: " + film.getDescription());
 						System.out.println("language: " + film.getLanguage());
+						System.out.println("cast: " + film.getActorsInFilm());
 					}
 				} else {
 					System.out.println("unable to find movie that matches key-word");
