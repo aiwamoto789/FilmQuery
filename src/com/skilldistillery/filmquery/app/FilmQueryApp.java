@@ -101,5 +101,6 @@ public class FilmQueryApp {
 			System.out.println("Invalid menu selection");
 			app.launch();
 		}
+		
 	}
 }
