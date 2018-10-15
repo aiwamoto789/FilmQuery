@@ -42,25 +42,26 @@ public class FilmQueryApp {
 		System.out.println("Search for a movie by (1)id or (2) keyword or press (0) to exit");
 		FilmQueryApp app = new FilmQueryApp();
 		try {
-			int id = input.nextInt();
-			switch (id) {
+			int kb = input.nextInt();
+			switch (kb) {
 			case 0: {
 				System.exit(0);
 				break;
 			}
 			case 1: {
 				System.out.println("Enter the id of the movie you would like to see: ");
-				int id2 = input.nextInt();
-				Film film = db.getFilmById(id2);
-				if (film == null) {
-					System.out.println("Movie not found.  Invalid film id.");
-				} else {
+				int id = input.nextInt();
+				Film film = db.getFilmById(id);
+				if (film.getTitle() != null) {
 					System.out.println("Title: " + film.getTitle());
 					System.out.println("year: " + film.getRelease_year());
 					System.out.println("rating: " + film.getRating());
 					System.out.println("description: " + film.getDescription());
 					System.out.println("language: " + film.getLanguage());
 					System.out.println("cast: " + film.getActorsInFilm());
+					} 
+				else {
+					System.out.println("Movie not found.  Invalid film id.");
 				}
 				break;
 			}
